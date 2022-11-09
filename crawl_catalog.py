@@ -7,7 +7,7 @@ from pathlib import Path
 from spotipy.oauth2 import SpotifyClientCredentials
 from shared import append_track
 
-spotify_credentials = SpotifyClientCredentials(client_id="a507ace5d0b84f868699a0e975008680",client_secret="030fee69ac8e4f6fbdf30fc9fdf964a4")
+spotify_credentials = SpotifyClientCredentials()
 spotify_client = spotipy.Spotify(auth_manager=spotify_credentials)
 
 trackCounter = 0
@@ -111,7 +111,7 @@ else:
     search.artist_ids.add('0TnOYISbd1XYRBk9myaseg')
     
 
-for i in range(20):
+for i in range(10000):
     try:
         track_id = search.get_next_track()
         
