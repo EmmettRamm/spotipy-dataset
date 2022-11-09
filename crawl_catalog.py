@@ -111,8 +111,7 @@ else:
     search.artist_ids.add('0TnOYISbd1XYRBk9myaseg')
     
 
-for i in range(20000):
-    
+for i in range(20):
     try:
         track_id = search.get_next_track()
         
@@ -122,15 +121,21 @@ for i in range(20000):
         if (trackCounter % 10 == 0):
             print("Track count: " + str(trackCounter))
 
+    except KeyboardInterrupt:
+        print("Manual Exit")
+        #csv_file.close()
+        #search.save()
+        break
+
     except:
-        # Guess this doesn't happen automatically if there's a finally block?!
         traceback.print_exc()
         errorCounter += 1
-        if (errorCounter > 5):
+        if errorCounter > 5:
             errorCounter = 0
-            choice = input("5 Consecutive errors have occured. If you want to continue please enter 'y'. If you would like to stop enter 's': ")
+            choice = input("5 Consecutive errors have occured. If you want to continue please enter 'y'.")
             if choice != 'y':
                 break
 
 csv_file.close()
 search.save()
+print("Location saved")
